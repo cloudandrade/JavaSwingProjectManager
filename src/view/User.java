@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import dao.UserDAO;
 import model.TableModel;
 import model.UserModel;
 
@@ -26,6 +27,7 @@ public class User extends JFrame {
 	private JTextField textField;
 	private JTable table;
 	private ArrayList<UserModel> users;
+	private static UserDAO userDao;
 
 	/**
 	 * Launch the application.
@@ -34,6 +36,7 @@ public class User extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					userDao = new UserDAO();
 					User frame = new User();
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
@@ -49,8 +52,8 @@ public class User extends JFrame {
 	 */
 	public User() {
 		users = new ArrayList<>();
-		users.add(new UserModel(1, "Joao Claudio", "joao.claudio", "jclaudio@gmail.com", "71987135264", "98wgnwe089ngw"));
-		users.add(new UserModel(2, "Jeane", "jeane.silva", "jsilva@gmail.com", "7198856864", "16wgn6jhdefjwgw"));
+
+		users =	userDao.list();
 		System.out.println("users: "+ users);
 		TableModel tableModel = new TableModel(users);
 
