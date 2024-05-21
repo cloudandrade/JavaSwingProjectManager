@@ -2,7 +2,6 @@ package view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 
@@ -16,6 +15,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.JSeparator;
 
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame {
@@ -34,12 +34,15 @@ public class MainFrame extends JFrame {
         mainPanel.setPreferredSize(Constants.MAIN_SIZE);
 
         // Crie os JPanels
-        JPanel panel1 = new Panel1(this);
-        JPanel panel2 = new Panel2(this);
+        JPanel homePanel = new MainHomePanel(this);
+        JPanel projectPanel = new MainProjectPanel(this);
+        JPanel userPanel = new MainUserPanel(this);
 
         // Adicione os JPanels ao CardLayout
-        mainPanel.add(panel1, "Panel1");
-        mainPanel.add(panel2, "Panel2");
+        //nome da variavel do painel - nome da classe
+        mainPanel.add(homePanel, "MainHomePanel");
+        mainPanel.add(projectPanel, "MainProjectPanel");
+        mainPanel.add(userPanel, "MainUserPanel");
 
         // Crie o menu lateral
         JPanel menuPanel = createMenuPanel();
@@ -50,7 +53,7 @@ public class MainFrame extends JFrame {
         getContentPane().add(mainPanel, BorderLayout.CENTER);
 
         // Exiba o primeiro painel
-        cardLayout.show(mainPanel, "Panel1");
+        cardLayout.show(mainPanel, "MainHomePanel");
     }
 
     public void showPanel(String panelName) {
@@ -58,39 +61,63 @@ public class MainFrame extends JFrame {
     }
 
     private JPanel createMenuPanel() {
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(Constants.MENU_SIZE);
-        panel.setBackground(Color.LIGHT_GRAY);
+        JPanel panelMenu = new JPanel();
+        panelMenu.setPreferredSize(Constants.MENU_SIZE);
+        panelMenu.setBackground(new Color(0, 128, 64));
 
-        JButton button1 = new JButton("Panel 1");
-        button1.setBounds(0, 65, 160, 42);
-        button1.addActionListener(new ActionListener() {
+        JButton btnHome = new JButton("Inicio");
+        btnHome.setBounds(0, 95, 273, 42);
+        btnHome.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                showPanel("Panel1");
+                showPanel("MainHomePanel");
             }
         });
+        panelMenu.setLayout(null);
 
-        JButton button2 = new JButton("Panel 2");
-        button2.setBounds(0, 107, 160, 42);
-        button2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showPanel("Panel2");
-            }
-        });
-        panel.setLayout(null);
-
-        panel.add(button1);
-        panel.add(button2);
+        panelMenu.add(btnHome);
         
-        JLabel lblNewLabel = new JLabel("MENU");
-        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel.setFont(new Font("Monospaced", Font.BOLD, 32));
-        lblNewLabel.setBounds(0, 12, 160, 42);
-        panel.add(lblNewLabel);
+        JLabel lblMenuLabel = new JLabel("ProjectManager");
+        lblMenuLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        lblMenuLabel.setFont(new Font("Monospaced", Font.BOLD, 28));
+        lblMenuLabel.setBounds(0, 24, 273, 42);
+        panelMenu.add(lblMenuLabel);
+        
+        JButton btnMainUser = new JButton("Usuários");
+        btnMainUser.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		showPanel("MainUserPanel");
+        	}
+        });
+        btnMainUser.setBounds(0, 137, 273, 42);
+        panelMenu.add(btnMainUser);
+        
+        JButton btnLogout = new JButton("Sair");
+        btnLogout.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		dispose();
+        		LoginFrame frame = new LoginFrame();
+				frame.setLocationRelativeTo(null);
+				frame.setVisible(true);
+        	}
+        });
+        btnLogout.setBounds(0, 650, 273, 33);
+        panelMenu.add(btnLogout);
+        
+        JSeparator separator = new JSeparator();
+        separator.setBounds(0, 84, 273, 2);
+        panelMenu.add(separator);
+        
+        JButton btnMainProject = new JButton("Projetos");
+        btnMainProject.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		showPanel("MainProjectPanel");
+        	}
+        });
+        btnMainProject.setBounds(0, 179, 273, 42);
+        panelMenu.add(btnMainProject);
 
-        return panel;
+        return panelMenu;
     }
 
     public static void main(String[] args) {

@@ -16,34 +16,31 @@ import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Login extends JFrame {
+public class LoginFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textFieldUser;
 	private JPasswordField passwordField;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setLocationRelativeTo(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					LoginFrame frame = new LoginFrame();
+//					frame.setLocationRelativeTo(null);
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public Login() {
+	public LoginFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 560, 440);
 		contentPane = new JPanel();
@@ -76,13 +73,14 @@ public class Login extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Crypto crypto = new Crypto(passwordField.getText(), Crypto.MD5);
-				System.out.println(crypto.toString());
-				if(textFieldUser.getText() != null && textFieldUser.getText().isEmpty() && passwordField.getText() != null && passwordField.getText().isEmpty()) {
+				System.out.println(textFieldUser.getText());
+				System.out.println(passwordField.getPassword());
+				if(textFieldUser.getText() != null && !textFieldUser.getText().isEmpty() && passwordField.getPassword() != null && passwordField.getPassword().length > 0) {
 					
-					User userScreen = new User();
+					MainFrame mainScreen = new MainFrame();
 					dispose();
-					userScreen.setLocationRelativeTo(userScreen);
-					userScreen.setVisible(true);
+					mainScreen.setLocationRelativeTo(mainScreen);
+					mainScreen.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(btnNewButton, "Verifique o Usuário e Senha", "Avisos", JOptionPane.WARNING_MESSAGE);
 				}
@@ -94,6 +92,7 @@ public class Login extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("Bem Vindo");
 		lblNewLabel_2.setBounds(225, 35, 73, 23);
 		panel.add(lblNewLabel_2);
+		
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(150, 164, 244, 20);

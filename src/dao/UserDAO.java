@@ -22,14 +22,14 @@ public class UserDAO {
      private static String LIST_USERS = "SELECT * FROM USER";
      
      private static String FIND_USER = "SELECT * FROM USER " 
-    		 + " WHERE ID = ? ";
+    		 + "WHERE ID = ? ";
      
-     private static String UPDATE_USER = "UPDATE USER " 
-    		 + " name = ?, user = ?, email = ?, phone = ?, password = ? " 
-    		 + " WHERE id = ?";
+     private static String UPDATE_USER = "UPDATE USER SET " 
+    		 + "name = ?, user = ?, email = ?, phone = ?, password = ? " 
+    		 + "WHERE id = ?";
      
      private static String DELETE_USER = "DELETE FROM USER " 
-    		 + " WHERE ID = ? ";
+    		 + "WHERE ID = ? ";
      
      @SuppressWarnings("static-access")
 	public UserDAO() {
@@ -147,7 +147,7 @@ public class UserDAO {
      public ArrayList<UserModel> findByName(String search){
     	 ArrayList<UserModel> usersList = new ArrayList<>();
     	 
-    	 String FIND_USER_BY_NAME = "SELECT * FROM USER WHERE nome LIKE '%" + search + "%'";
+    	 String FIND_USER_BY_NAME = "SELECT * FROM USER WHERE name LIKE '%" + search + "%'";
          try {
         	 
         	 PreparedStatement statement = connection.prepareCall(FIND_USER_BY_NAME);

@@ -4,13 +4,15 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
-public class TableModel extends AbstractTableModel{
+public class UserTableModel extends AbstractTableModel{
 	
+	private static final long serialVersionUID = 1L;
+
 	private static final String[] collumns = {"Id", "Usuario","Nome","Email", "Senha", "Telefone"};
 	
 	private ArrayList<UserModel> users;
 
-	public TableModel(ArrayList<UserModel> users) {
+	public UserTableModel(ArrayList<UserModel> users) {
 		super();
 		this.users = users;
 	}

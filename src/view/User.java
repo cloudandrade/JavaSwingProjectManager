@@ -15,7 +15,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import dao.UserDAO;
-import model.TableModel;
+import model.UserTableModel;
 import model.UserModel;
 
 import javax.swing.JScrollPane;
@@ -47,15 +47,12 @@ public class User extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public User() {
 		users = new ArrayList<>();
 
 		users =	userDao.list();
 		System.out.println("users: "+ users);
-		TableModel tableModel = new TableModel(users);
+		UserTableModel tableModel = new UserTableModel(users);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);

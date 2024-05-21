@@ -3,8 +3,8 @@ package application;
 import java.awt.Dimension;
 
 public class Constants {
-	public static final int FRAME_WIDTH = 800;
-    public static final int FRAME_HEIGHT = 600;
+	public static final int FRAME_WIDTH = 1366;
+    public static final int FRAME_HEIGHT = 720;
     public static final Dimension FRAME_SIZE = new Dimension(FRAME_WIDTH, FRAME_HEIGHT);
     public static final int MENU_WIDTH = (int) (FRAME_WIDTH * 0.2);
     public static final int MAIN_WIDTH = (int) (FRAME_WIDTH * 0.8);

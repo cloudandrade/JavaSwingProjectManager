@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/JANCLOUDE/eclipse-workspace/ProjectManager/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/jc_16/Documents/projetos/JavaSwingProjectManager/other/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/JANCLOUDE/Documents/projetos/self/JavaSwingProjectManager/other/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
