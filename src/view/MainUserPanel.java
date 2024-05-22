@@ -47,6 +47,9 @@ public class MainUserPanel extends JPanel {
 		JButton btnNewButton = new JButton("Cadastrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				UserUpsertFrame addUserFrame = new UserUpsertFrame(null);
+				addUserFrame.setLocationRelativeTo(null);
+				addUserFrame.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(21, 161, 101, 23);
@@ -67,7 +70,7 @@ public class MainUserPanel extends JPanel {
 		add(lblNewLabel);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(21, 215, 1045, 368);
+		scrollPane.setBounds(21, 249, 1045, 368);
 		add(scrollPane);
 		
 		
@@ -80,6 +83,18 @@ public class MainUserPanel extends JPanel {
 		lblUsers.setFont(new Font("Tahoma", Font.BOLD, 28));
 		lblUsers.setBounds(21, 11, 1045, 41);
 		add(lblUsers);
+		
+		JButton btnEditUser = new JButton("Editar");
+		btnEditUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnEditUser.setBounds(818, 215, 119, 23);
+		add(btnEditUser);
+		
+		JButton btnDeleteUser = new JButton("Excluir");
+		btnDeleteUser.setBounds(947, 215, 119, 23);
+		add(btnDeleteUser);
 
 	}
 }

@@ -22,14 +22,17 @@ public class UserDAO {
      private static String LIST_USERS = "SELECT * FROM USER";
      
      private static String FIND_USER = "SELECT * FROM USER " 
-    		 + "WHERE ID = ? ";
+    		 + "WHERE id = ? ";
+     
+     private static String FIND_USER_BY_EMAIL = "SELECT * FROM USER " 
+    		 + "WHERE email = ? ";
      
      private static String UPDATE_USER = "UPDATE USER SET " 
     		 + "name = ?, user = ?, email = ?, phone = ?, password = ? " 
     		 + "WHERE id = ?";
      
      private static String DELETE_USER = "DELETE FROM USER " 
-    		 + "WHERE ID = ? ";
+    		 + "WHERE id = ? ";
      
      @SuppressWarnings("static-access")
 	public UserDAO() {
@@ -124,6 +127,33 @@ public class UserDAO {
          try {
              PreparedStatement statement = connection.prepareCall(FIND_USER);
              statement.setInt(1, userId);
+             
+             ResultSet resultSet = statement.executeQuery();
+             
+               user.setId(resultSet.getInt("id"));
+               user.setName(resultSet.getString("name"));
+               user.setUser(resultSet.getString("user"));
+               user.setEmail(resultSet.getString("email"));
+               user.setPhone(resultSet.getString("phone"));
+               user.setPassword(resultSet.getString("password"));
+             
+             resultSet.close();
+             statement.close();
+         } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+         }
+           
+         return user;
+     }
+     
+ public UserModel findByEmail(String email){
+    	 
+    	 UserModel user = new UserModel();
+         
+         try {
+             PreparedStatement statement = connection.prepareCall(FIND_USER_BY_EMAIL);
+             statement.setString(1, email);
              
              ResultSet resultSet = statement.executeQuery();
              

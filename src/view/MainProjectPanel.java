@@ -51,6 +51,9 @@ public MainProjectPanel(MainFrame mainFrame) {
 	JButton btnNewButton = new JButton("Cadastrar");
 	btnNewButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
+			ProjectUpsertFrame addProjectFrame = new ProjectUpsertFrame(null);
+			addProjectFrame.setLocationRelativeTo(null);
+			addProjectFrame.setVisible(true);
 		}
 	});
 	btnNewButton.setBounds(21, 161, 101, 23);
@@ -71,7 +74,7 @@ public MainProjectPanel(MainFrame mainFrame) {
 	add(lblNewLabel);
 	
 	JScrollPane scrollPane = new JScrollPane();
-	scrollPane.setBounds(21, 215, 1045, 368);
+	scrollPane.setBounds(21, 249, 1045, 368);
 	add(scrollPane);
 	
 	
@@ -84,6 +87,18 @@ public MainProjectPanel(MainFrame mainFrame) {
 	lblProjects.setFont(new Font("Tahoma", Font.BOLD, 28));
 	lblProjects.setBounds(21, 11, 1045, 41);
 	add(lblProjects);
+	
+	JButton btnDeleteProject = new JButton("Excluir");
+	btnDeleteProject.setBounds(947, 215, 119, 23);
+	add(btnDeleteProject);
+	
+	JButton btnEditProject = new JButton("Editar");
+	btnEditProject.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		}
+	});
+	btnEditProject.setBounds(818, 215, 119, 23);
+	add(btnEditProject);
 
 }
 }

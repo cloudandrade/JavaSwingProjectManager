@@ -10,4 +10,9 @@ public class Constants {
     public static final int MAIN_WIDTH = (int) (FRAME_WIDTH * 0.8);
     public static final Dimension MENU_SIZE = new Dimension(MENU_WIDTH, FRAME_HEIGHT);
     public static final Dimension MAIN_SIZE = new Dimension(MAIN_WIDTH, FRAME_HEIGHT);
+    
+    public static final int SMALL_FRAME_WIDTH = 500;
+    public static final int SMALL_FRAME_HEIGHT = 500;
+    public static final Dimension SMALL_FRAME_SIZE = new Dimension(SMALL_FRAME_WIDTH, SMALL_FRAME_HEIGHT);
+    public static final Dimension SMALL_FRAME__EXTENDED_SIZE = new Dimension(SMALL_FRAME_WIDTH, 600);
 }

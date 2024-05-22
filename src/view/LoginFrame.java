@@ -1,12 +1,11 @@
 package view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controller.Crypto;
+import controller.LoginController;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -14,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class LoginFrame extends JFrame {
@@ -23,23 +23,6 @@ public class LoginFrame extends JFrame {
 	private JTextField textFieldUser;
 	private JPasswordField passwordField;
 
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					LoginFrame frame = new LoginFrame();
-//					frame.setLocationRelativeTo(null);
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the frame.
-	 */
 	public LoginFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 560, 440);
@@ -75,14 +58,23 @@ public class LoginFrame extends JFrame {
 				Crypto crypto = new Crypto(passwordField.getText(), Crypto.MD5);
 				System.out.println(textFieldUser.getText());
 				System.out.println(passwordField.getPassword());
-				if(textFieldUser.getText() != null && !textFieldUser.getText().isEmpty() && passwordField.getPassword() != null && passwordField.getPassword().length > 0) {
-					
-					MainFrame mainScreen = new MainFrame();
-					dispose();
-					mainScreen.setLocationRelativeTo(mainScreen);
-					mainScreen.setVisible(true);
-				} else {
+				
+				if(textFieldUser.getText() == null || textFieldUser.getText().isEmpty() || passwordField.getText() == null || passwordField.getText().isEmpty()) {
 					JOptionPane.showMessageDialog(btnNewButton, "Verifique o Usuário e Senha", "Avisos", JOptionPane.WARNING_MESSAGE);
+					
+				} else {
+					
+					ArrayList<String> validationResult = LoginController.validateLogin(textFieldUser.getText(), passwordField.getText());
+					if(validationResult.get(0) == "Error") {
+						JOptionPane.showMessageDialog(btnNewButton, validationResult.get(1), "Avisos", JOptionPane.WARNING_MESSAGE);
+					} else {
+						System.out.println(validationResult.get(1));
+						MainFrame mainScreen = new MainFrame();
+						dispose();
+						mainScreen.setLocationRelativeTo(mainScreen);
+						mainScreen.setVisible(true);
+					}
+					
 				}
 			}
 		});

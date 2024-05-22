@@ -12,6 +12,15 @@ public class UserModel {
 
 	}
 	
+	public UserModel( String name, String user, String email, String phone, String password) {
+		super();
+		this.name = name;
+		this.user = user;
+		this.email = email;
+		this.phone = phone;
+		this.password = password;
+	}
+	
 	public UserModel(int id, String name, String user, String email, String phone, String password) {
 		super();
 		this.id = id;
