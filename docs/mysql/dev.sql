@@ -4,7 +4,7 @@ USE `odsmanager`;
 
 CREATE TABLE IF NOT EXISTS `User` (
 	`id` int AUTO_INCREMENT NOT NULL UNIQUE,
-	`user` varchar(50),
+	`username` varchar(50),
 	`name` varchar(255),
 	`email` varchar(255),
 	`phone` varchar(255) NOT NULL,
@@ -29,6 +29,22 @@ CREATE TABLE IF NOT EXISTS `Project` (
 	PRIMARY KEY (`id`)
 );
 
-ALTER TABLE `Project` ADD CONSTRAINT `Project_fk3` FOREIGN KEY (`owner_id`) REFERENCES `User`(`id`);
+INSERT INTO user (username, name, email, phone, password) VALUES ("adm", "admin", "admin@pm.com", "000000000", "Admin@24k");
 
-ALTER TABLE `Project` ADD CONSTRAINT `Project_fk4` FOREIGN KEY (`ods_id`) REFERENCES `ODS`(`id`);
+INSERT INTO ods (title) values ("ERRADICAÇÃO DA POBREZA");
+INSERT INTO ods (title) values ("FOME ZERO E AGRICULTURA SUSTENTÁVEL");
+INSERT INTO ods (title) values ("SAÚDE E BEM-ESTAR");
+INSERT INTO ods (title) values ("EDUCAÇÃO DE QUALIDADE");
+INSERT INTO ods (title) values ("IGUALDADE DE GÊNERO");
+INSERT INTO ods (title) values ("ÁGUA POTÁVEL");
+INSERT INTO ods (title) values ("ENERGIA LIMPA E ACESSÍVEL");
+INSERT INTO ods (title) values ("TRABALHO DECENTE E CRESCIMENTO ECONÔMICO");
+INSERT INTO ods (title) values ("INDÚSTRIA, INOVAÇÃO E INFRAESTRUTURA");
+INSERT INTO ods (title) values ("REDUÇÃO DAS DESIGUALDADES");
+INSERT INTO ods (title) values ("CIDADES E COMUNIDADES SUSTENTÁVEIS");
+INSERT INTO ods (title) values ("CONSUMO E PRODUÇÃO RESPONSÁVEIS");
+INSERT INTO ods (title) values ("AÇÃO CONTRA A MUDANÇA GLOBAL DO CLIMA");
+INSERT INTO ods (title) values ("VIDA NA ÁGUA");
+INSERT INTO ods (title) values ("VIDA TERRESTRE");
+INSERT INTO ods (title) values ("PAZ, JUSTIÇA E INSTITUIÇÕES EFICAZES");
+INSERT INTO ods (title) values ("PARCERIAS E MEIOS DE IMPLEMENTAÇÃO");

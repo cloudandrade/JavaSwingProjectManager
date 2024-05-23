@@ -15,7 +15,7 @@ public class UserDAO {
      private Connection connection = ConnectionFactory.getConnectionMySQL();;
  	
      private static String ADD_USER = "INSERT INTO USER " 
-    		 + "(name, user, email, phone, password) " 
+    		 + "(name, username, email, phone, password) " 
     		 + "VALUES (?,?,?,?,?)";
      
      
@@ -28,7 +28,7 @@ public class UserDAO {
     		 + "WHERE email = ? ";
      
      private static String UPDATE_USER = "UPDATE USER SET " 
-    		 + "name = ?, user = ?, email = ?, phone = ?, password = ? " 
+    		 + "name = ?, username = ?, email = ?, phone = ?, password = ? " 
     		 + "WHERE id = ?";
      
      private static String DELETE_USER = "DELETE FROM USER " 
@@ -43,7 +43,7 @@ public class UserDAO {
     	 try {
              PreparedStatement statement = connection.prepareCall(ADD_USER);
              statement.setString(1, user.getName());
-             statement.setString(2, user.getUser());
+             statement.setString(2, user.getUsername());
              statement.setString(3, user.getEmail());
              statement.setString(4, user.getPhone());
              statement.setString(5, user.getPassword());
@@ -62,7 +62,7 @@ public class UserDAO {
          try {
              PreparedStatement statement = connection.prepareCall(UPDATE_USER);
              statement.setString(1, user.getName());
-             statement.setString(2, user.getUser());
+             statement.setString(2, user.getUsername());
              statement.setString(3, user.getEmail());
              statement.setString(4, user.getPhone());
              statement.setString(5, user.getPassword());
@@ -103,7 +103,7 @@ public class UserDAO {
                
                user.setId(resultSet.getInt("id"));
                user.setName(resultSet.getString("name"));
-               user.setUser(resultSet.getString("user"));
+               user.setUsername(resultSet.getString("username"));
                user.setEmail(resultSet.getString("email"));
                user.setPhone(resultSet.getString("phone"));
                user.setPassword(resultSet.getString("password"));
@@ -132,7 +132,7 @@ public class UserDAO {
              
                user.setId(resultSet.getInt("id"));
                user.setName(resultSet.getString("name"));
-               user.setUser(resultSet.getString("user"));
+               user.setUsername(resultSet.getString("username"));
                user.setEmail(resultSet.getString("email"));
                user.setPhone(resultSet.getString("phone"));
                user.setPassword(resultSet.getString("password"));
@@ -159,7 +159,7 @@ public class UserDAO {
              
                user.setId(resultSet.getInt("id"));
                user.setName(resultSet.getString("name"));
-               user.setUser(resultSet.getString("user"));
+               user.setUsername(resultSet.getString("username"));
                user.setEmail(resultSet.getString("email"));
                user.setPhone(resultSet.getString("phone"));
                user.setPassword(resultSet.getString("password"));
@@ -188,7 +188,7 @@ public class UserDAO {
              
              user.setId(resultSet.getInt("id"));
              user.setName(resultSet.getString("name"));
-             user.setUser(resultSet.getString("user"));
+             user.setUsername(resultSet.getString("username"));
              user.setEmail(resultSet.getString("email"));
              user.setPhone(resultSet.getString("phone"));
              user.setPassword(resultSet.getString("password"));

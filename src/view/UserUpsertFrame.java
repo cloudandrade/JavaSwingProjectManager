@@ -115,7 +115,7 @@ public class UserUpsertFrame extends JFrame {
 
     private void populateFields() {
         nameField.setText(user.getName());
-        userField.setText(user.getUser());
+        userField.setText(user.getUsername());
         emailField.setText(user.getEmail());
         phoneField.setText(user.getPhone());
         passwordField.setText(user.getPassword());
@@ -123,13 +123,13 @@ public class UserUpsertFrame extends JFrame {
 
     private void saveUser() {
         String nameValue = nameField.getText();
-        String userValue = userField.getText();
+        String usernameValue = userField.getText();
         String emailValue = emailField.getText();
         String phoneValue = phoneField.getText();
         String passwordValue = new String(passwordField.getPassword());
 
         if (user == null) {
-            user = new UserModel(userValue, userValue, emailValue, phoneValue, passwordValue);
+            user = new UserModel( nameValue, usernameValue, emailValue, phoneValue, passwordValue);
             ArrayList<String> result = UserController.addUser(user);
             if(result.get(0) == "Error") {
             	JOptionPane.showMessageDialog(this, result.get(1));
@@ -140,7 +140,7 @@ public class UserUpsertFrame extends JFrame {
 
         } else {
             user.setName(nameValue);
-            user.setUser(userValue);
+            user.setUsername(usernameValue);
             user.setEmail(emailValue);
             user.setPhone(phoneValue);
             user.setPassword(passwordValue);

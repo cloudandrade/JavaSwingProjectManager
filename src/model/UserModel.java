@@ -3,7 +3,7 @@ package model;
 public class UserModel {
 	protected int id;
 	protected String name;
-	protected String user;
+	protected String username;
 	protected String email;
 	protected String phone;
 	protected String password;
@@ -12,20 +12,20 @@ public class UserModel {
 
 	}
 	
-	public UserModel( String name, String user, String email, String phone, String password) {
+	public UserModel( String name, String username, String email, String phone, String password) {
 		super();
 		this.name = name;
-		this.user = user;
+		this.username = username;
 		this.email = email;
 		this.phone = phone;
 		this.password = password;
 	}
 	
-	public UserModel(int id, String name, String user, String email, String phone, String password) {
+	public UserModel(int id, String name, String username, String email, String phone, String password) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.user = user;
+		this.username = username;
 		this.email = email;
 		this.phone = phone;
 		this.password = password;
@@ -47,12 +47,12 @@ public class UserModel {
 		this.name = name;
 	}
 
-	public String getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {

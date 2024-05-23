@@ -37,7 +37,7 @@ public class UserTableModel extends AbstractTableModel{
 			return user.getId();
 		}
 		case 1: {
-			return user.getUser();
+			return user.getUsername();
 		}
 		case 2: {
 			return user.getName();
