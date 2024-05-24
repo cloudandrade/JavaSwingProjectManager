@@ -12,7 +12,7 @@ import model.UserModel;
 
 public class UserDAO {
      
-     private Connection connection = ConnectionFactory.getConnectionMySQL();;
+     private Connection connection = ConnectionFactory.getConnectionMySQL();
  	
      private static String ADD_USER = "INSERT INTO USER " 
     		 + "(name, username, email, phone, password) " 
@@ -120,57 +120,47 @@ public class UserDAO {
          return usersList;
      }
      
-     public UserModel findById(int userId){
-    	 
-    	 UserModel user = new UserModel();
-         
-         try {
-             PreparedStatement statement = connection.prepareCall(FIND_USER);
+     public UserModel findById(int userId) {
+         UserModel user = null;
+         try (PreparedStatement statement = connection.prepareCall(FIND_USER)) {
              statement.setInt(1, userId);
-             
-             ResultSet resultSet = statement.executeQuery();
-             
-               user.setId(resultSet.getInt("id"));
-               user.setName(resultSet.getString("name"));
-               user.setUsername(resultSet.getString("username"));
-               user.setEmail(resultSet.getString("email"));
-               user.setPhone(resultSet.getString("phone"));
-               user.setPassword(resultSet.getString("password"));
-             
-             resultSet.close();
-             statement.close();
+             try (ResultSet resultSet = statement.executeQuery()) {
+                 if (resultSet.next()) {
+                     user = new UserModel();
+                     user.setId(resultSet.getInt("id"));
+                     user.setName(resultSet.getString("name"));
+                     user.setUsername(resultSet.getString("username"));
+                     user.setEmail(resultSet.getString("email"));
+                     user.setPhone(resultSet.getString("phone"));
+                     user.setPassword(resultSet.getString("password"));
+                 }
+             }
          } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
+             e.printStackTrace();
+             throw new RuntimeException(e);
          }
-           
          return user;
      }
      
- public UserModel findByEmail(String email){
-    	 
-    	 UserModel user = new UserModel();
-         
-         try {
-             PreparedStatement statement = connection.prepareCall(FIND_USER_BY_EMAIL);
+     public UserModel findByEmail(String email) {
+         UserModel user = null;
+         try (PreparedStatement statement = connection.prepareCall(FIND_USER_BY_EMAIL)) {
              statement.setString(1, email);
-             
-             ResultSet resultSet = statement.executeQuery();
-             
-               user.setId(resultSet.getInt("id"));
-               user.setName(resultSet.getString("name"));
-               user.setUsername(resultSet.getString("username"));
-               user.setEmail(resultSet.getString("email"));
-               user.setPhone(resultSet.getString("phone"));
-               user.setPassword(resultSet.getString("password"));
-             
-             resultSet.close();
-             statement.close();
+             try (ResultSet resultSet = statement.executeQuery()) {
+                 if (resultSet.next()) {
+                     user = new UserModel();
+                     user.setId(resultSet.getInt("id"));
+                     user.setName(resultSet.getString("name"));
+                     user.setUsername(resultSet.getString("username"));
+                     user.setEmail(resultSet.getString("email"));
+                     user.setPhone(resultSet.getString("phone"));
+                     user.setPassword(resultSet.getString("password"));
+                 }
+             }
          } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
+             e.printStackTrace();
+             throw new RuntimeException(e);
          }
-           
          return user;
      }
      
