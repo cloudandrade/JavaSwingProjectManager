@@ -45,6 +45,7 @@ public class MainProjectPanel extends JPanel {
         setLayout(null);
 
         JButton btnNewButton = new JButton("Cadastrar");
+        btnNewButton.setBackground(Color.GREEN);
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openProjectUpsertFrame(null); // Abrir ProjectUpsertFrame para adicionar novo projeto
@@ -59,6 +60,7 @@ public class MainProjectPanel extends JPanel {
         textField.setColumns(10);
 
         JButton btnNewButton_1 = new JButton("Pesquisar");
+        btnNewButton_1.setBackground(Color.CYAN);
         btnNewButton_1.setBounds(947, 161, 119, 23);
         add(btnNewButton_1);
 
@@ -81,11 +83,13 @@ public class MainProjectPanel extends JPanel {
         add(lblProjects);
 
         JButton btnDeleteProject = new JButton("Excluir");
+        btnDeleteProject.setBackground(new Color(128, 0, 0));
         btnDeleteProject.setBounds(947, 215, 119, 23);
         add(btnDeleteProject);
         btnDeleteProject.setEnabled(false); // Desabilita o botão Excluir inicialmente
 
         JButton btnEditProject = new JButton("Editar");
+        btnEditProject.setBackground(Color.YELLOW);
         btnEditProject.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = table.getSelectedRow();
