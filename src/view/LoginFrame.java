@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controller.Crypto;
 import controller.LoginController;
 
 import javax.swing.JLabel;
@@ -55,7 +54,7 @@ public class LoginFrame extends JFrame {
 		//Acão do botão 
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Crypto crypto = new Crypto(passwordField.getText(), Crypto.MD5);
+				
 				System.out.println(textFieldUser.getText());
 				System.out.println(passwordField.getPassword());
 				

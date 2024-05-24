@@ -29,7 +29,8 @@ CREATE TABLE IF NOT EXISTS `Project` (
 	PRIMARY KEY (`id`)
 );
 
-INSERT INTO user (username, name, email, phone, password) VALUES ("adm", "admin", "admin@pm.com", "000000000", "Admin@24k");
+INSERT INTO user (username, name, email, phone, password) VALUES ("adm", "admin", "admin@pm.com", "000000000", "$2a$10$5rREqwYq0bX0o4jG/3uP3ejx1Y9bB.ftmsmsoOHhLrRiDtFkoND8q"); 
+-- encrypted password Admin@24k
 
 INSERT INTO ods (title) values ("ERRADICAÇÃO DA POBREZA");
 INSERT INTO ods (title) values ("FOME ZERO E AGRICULTURA SUSTENTÁVEL");
