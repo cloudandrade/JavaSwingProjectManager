@@ -63,9 +63,11 @@ public class MainFrame extends JFrame {
     private JPanel createMenuPanel() {
         JPanel panelMenu = new JPanel();
         panelMenu.setPreferredSize(Constants.MENU_SIZE);
-        panelMenu.setBackground(new Color(0, 128, 64));
+        panelMenu.setBackground(new Color(135, 206, 250));
 
         JButton btnHome = new JButton("Inicio");
+        btnHome.setFont(new Font("Tahoma", Font.BOLD, 16));
+        btnHome.setBackground(new Color(147, 112, 219));
         btnHome.setBounds(0, 95, 273, 42);
         btnHome.addActionListener(new ActionListener() {
             @Override
@@ -77,13 +79,15 @@ public class MainFrame extends JFrame {
 
         panelMenu.add(btnHome);
         
-        JLabel lblMenuLabel = new JLabel("ProjectManager");
+        JLabel lblMenuLabel = new JLabel("Project\r\nManager");
         lblMenuLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        lblMenuLabel.setFont(new Font("Monospaced", Font.BOLD, 28));
-        lblMenuLabel.setBounds(0, 24, 273, 42);
+        lblMenuLabel.setFont(new Font("Impact", Font.BOLD, 42));
+        lblMenuLabel.setBounds(0, 11, 273, 73);
         panelMenu.add(lblMenuLabel);
         
         JButton btnMainUser = new JButton("Usuários");
+        btnMainUser.setFont(new Font("Tahoma", Font.BOLD, 16));
+        btnMainUser.setBackground(new Color(147, 112, 219));
         btnMainUser.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		showPanel("MainUserPanel");
@@ -93,6 +97,8 @@ public class MainFrame extends JFrame {
         panelMenu.add(btnMainUser);
         
         JButton btnLogout = new JButton("Sair");
+        btnLogout.setFont(new Font("Tahoma", Font.BOLD, 16));
+        btnLogout.setBackground(new Color(147, 112, 219));
         btnLogout.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		dispose();
@@ -109,6 +115,8 @@ public class MainFrame extends JFrame {
         panelMenu.add(separator);
         
         JButton btnMainProject = new JButton("Projetos");
+        btnMainProject.setFont(new Font("Tahoma", Font.BOLD, 16));
+        btnMainProject.setBackground(new Color(147, 112, 219));
         btnMainProject.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		showPanel("MainProjectPanel");

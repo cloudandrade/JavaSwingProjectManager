@@ -61,7 +61,6 @@ public class MainUserPanel extends JPanel {
         textField.setColumns(10);
 
         JButton btnNewButton_1 = new JButton("Pesquisar");
-        btnNewButton_1.setBackground(Color.CYAN);
         btnNewButton_1.setBounds(947, 161, 119, 23);
         add(btnNewButton_1);
 
@@ -84,9 +83,9 @@ public class MainUserPanel extends JPanel {
         add(lblUsers);
 
         btnEditUser = new JButton("Editar");
-        btnEditUser.setForeground(new Color(255, 255, 0));
+        btnEditUser.setForeground(Color.BLACK);
         btnEditUser.setEnabled(false);
-        btnEditUser.setBackground(Color.YELLOW);
+        
         btnEditUser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (selectedUser != null) {
@@ -98,8 +97,9 @@ public class MainUserPanel extends JPanel {
         add(btnEditUser);
 
         btnDeleteUser = new JButton("Excluir");
+        btnDeleteUser.setForeground(Color.BLACK);
         btnDeleteUser.setEnabled(false);
-        btnDeleteUser.setBackground(new Color(128, 0, 0));
+        
         btnDeleteUser.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (selectedUser != null) {
@@ -118,7 +118,9 @@ public class MainUserPanel extends JPanel {
                         int selectedRowIndex = table.getSelectedRow();
                         selectedUser = users.get(selectedRowIndex);
                         btnEditUser.setEnabled(true);
+                        btnEditUser.setBackground(Color.YELLOW);
                         btnDeleteUser.setEnabled(true);
+                        btnDeleteUser.setBackground(new Color(128, 0, 0));
                     } else {
                         btnEditUser.setEnabled(false);
                         btnDeleteUser.setEnabled(false);
