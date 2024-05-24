@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,23 +30,22 @@ public class ProjectUpsertFrame extends JFrame {
     private JTextField ownerNameField;
     private JTextField ownerPhoneField;
     private JTextField odsIdField;
-    private JTextField odsNameField;
-    private JTextField createdAtField;
-    private JTextField statusField;
     private JButton saveButton;
 
     private ProjectModel project;
+    private MainProjectPanel mainProjectPanel;
 
-public ProjectUpsertFrame(ProjectModel project) {
-    this.project = project;
-    initialize();
-    if (project != null) {
-        populateFields();
-        setTitle("Editar Projeto");
-    } else {
-        setTitle("Cadastrar Projeto");
+    public ProjectUpsertFrame(ProjectModel project, MainProjectPanel mainProjectPanel) {
+        this.project = project;
+        this.mainProjectPanel = mainProjectPanel;
+        initialize();
+        if (project != null) {
+            populateFields();
+            setTitle("Editar Projeto");
+        } else {
+            setTitle("Cadastrar Projeto");
+        }
     }
-}
 
 private void initialize() {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,27 +104,6 @@ private void initialize() {
     odsIdField.setBounds(22, 332, 440, 18);
     panel.add(odsIdField);
 
-    JLabel odsNameFieldLabel = new JLabel("Nome da ODS:");
-    odsNameFieldLabel.setBounds(22, 360, 440, 18);
-    panel.add(odsNameFieldLabel);
-    odsNameField = new JTextField();
-    odsNameField.setBounds(22, 378, 440, 18);
-    panel.add(odsNameField);
-
-    JLabel createdAtFieldLabel = new JLabel("Data de Criação:");
-    createdAtFieldLabel.setBounds(22, 406, 440, 18);
-    panel.add(createdAtFieldLabel);
-    createdAtField = new JTextField();
-    createdAtField.setBounds(22, 424, 440, 18);
-    panel.add(createdAtField);
-
-    JLabel statusFieldLabel = new JLabel("Status:");
-    statusFieldLabel.setBounds(22, 452, 440, 18);
-    panel.add(statusFieldLabel);
-    statusField = new JTextField();
-    statusField.setBounds(22, 470, 440, 18);
-    panel.add(statusField);
-
     saveButton = new JButton("Salvar");
     saveButton.setBounds(22, 510, 440, 36);
     saveButton.addActionListener(new ActionListener() {
@@ -146,9 +125,6 @@ private void populateFields() {
     ownerNameField.setText(project.getOwnerName());
     ownerPhoneField.setText(project.getOwnerPhone());
     odsIdField.setText(String.valueOf(project.getOdsId()));
-    odsNameField.setText(project.getOdsName());
-    createdAtField.setText(project.getCreatedAt().toString());
-    statusField.setText(project.getStatus());
 }
 
 private void saveProject() {
@@ -158,18 +134,21 @@ private void saveProject() {
     String ownerNameValue = ownerNameField.getText();
     String ownerPhoneValue = ownerPhoneField.getText();
     int odsIdValue = Integer.parseInt(odsIdField.getText());
-    String odsNameValue = odsNameField.getText();
-    Timestamp createdAtValue = Timestamp.valueOf(createdAtField.getText());
-    String statusValue = statusField.getText();
+    
+    Date date = new Date();
+    Timestamp createdAtValue = new Timestamp(date.getTime());
+    
+    String statusValue = Constants.PROJECT_STATUS_CREATED;
 
     if (project == null) {
-        project = new ProjectModel(0, titleValue, descriptionValue, ownerIdValue, ownerNameValue, ownerPhoneValue, odsIdValue, odsNameValue, createdAtValue, statusValue);
+        project = new ProjectModel(titleValue, descriptionValue, ownerIdValue, ownerNameValue, ownerPhoneValue, odsIdValue,  createdAtValue, statusValue);
         ArrayList<String> result = ProjectController.addProject(project);
         if(result.get(0) == "Error") {
         	JOptionPane.showMessageDialog(this, result.get(1));
         } else {
         	JOptionPane.showMessageDialog(this, result.get(1));
         	dispose();
+        	mainProjectPanel.refreshTable();
         }
 
     } else {
@@ -179,9 +158,6 @@ private void saveProject() {
         project.setOwnerName(ownerNameValue);
         project.setOwnerPhone(ownerPhoneValue);
         project.setOdsId(odsIdValue);
-        project.setOdsName(odsNameValue);
-        project.setCreatedAt(createdAtValue);
-        project.setStatus(statusValue);
         
         ArrayList<String> result = ProjectController.updateProject(project);
         if(result.get(0) == "Error") {
@@ -189,16 +165,9 @@ private void saveProject() {
         } else {
         	JOptionPane.showMessageDialog(this, result.get(1));
         	dispose();
+        	mainProjectPanel.refreshTable();
         }
     }
 }
 
-public static void main(String[] args) {
-    SwingUtilities.invokeLater(new Runnable() {
-        @Override
-        public void run() {
-            new ProjectUpsertFrame(null).setVisible(true);
-        }
-    });
-}
 }

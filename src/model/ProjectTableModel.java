@@ -40,7 +40,6 @@ public class ProjectTableModel extends AbstractTableModel{
 		case 2: {
 			return project.getDescription();
 		}
-		// "Data de Criação", "Status"
 		case 3: {
 			return project.getOwnerName();
 		}

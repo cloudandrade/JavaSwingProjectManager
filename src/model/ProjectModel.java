@@ -34,6 +34,20 @@ public class ProjectModel {
 		this.createdAt = createdAt;
 		this.status = status;
 	}
+	
+	public ProjectModel( String title, String description, int ownerId, String ownerName, String ownerPhone,
+			int odsId, Timestamp createdAt, String status) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.ownerId = ownerId;
+		this.ownerName = ownerName;
+		this.ownerPhone = ownerPhone;
+		this.odsId = odsId;
+		this.createdAt = createdAt;
+		this.status = status;
+	}
 
 
 	public int getId() {

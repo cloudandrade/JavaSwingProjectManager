@@ -36,7 +36,7 @@ public class ProjectDAO {
     		 + " AND P.ID = ? ";
      
      private static String UPDATE_PROJECT = "UPDATE PROJECT SET " 
-    		 + "title = ?, description = ?, ods_id = ?, status = ? " 
+    		 + "title = ?, description = ?, ods_id = ? " 
     		 + "WHERE id = ?";
      
      private static String DELETE_PROJECT = "DELETE FROM PROJECT " 
@@ -55,7 +55,7 @@ public class ProjectDAO {
              statement.setInt(3, project.getOwnerId());
              statement.setInt(4, project.getOdsId());
              statement.setTimestamp(5, project.getCreatedAt());
-             statement.setString(5, project.getStatus());
+             statement.setString(6, project.getStatus());
              
              statement.execute();
              statement.close();
@@ -74,8 +74,7 @@ public class ProjectDAO {
              statement.setString(1, project.getTitle());
              statement.setString(2, project.getDescription());
              statement.setInt(3, project.getOdsId());
-             statement.setString(4, project.getStatus());
-             statement.setInt(5, project.getId());
+             statement.setInt(4, project.getId());
              
              statement.execute();
              statement.close();

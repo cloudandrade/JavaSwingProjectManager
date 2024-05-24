@@ -15,4 +15,6 @@ public class Constants {
     public static final int SMALL_FRAME_HEIGHT = 500;
     public static final Dimension SMALL_FRAME_SIZE = new Dimension(SMALL_FRAME_WIDTH, SMALL_FRAME_HEIGHT);
     public static final Dimension SMALL_FRAME__EXTENDED_SIZE = new Dimension(SMALL_FRAME_WIDTH, 600);
+    
+    public static final String PROJECT_STATUS_CREATED = "CREATED";
 }
