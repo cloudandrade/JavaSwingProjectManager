@@ -31,14 +31,16 @@ public class UserUpsertFrame extends JFrame {
 
     private UserModel user;
     private JLabel label;
+    private MainUserPanel mainUserPanel;
 
-    public UserUpsertFrame(UserModel user) {
+    public UserUpsertFrame(UserModel user, MainUserPanel mainUserPanel) {
         this.user = user;
+        this.mainUserPanel = mainUserPanel;
         initialize();
         if (user != null) {
             populateFields();
             setTitle("Editar Usuário");
-          
+
         } else {
             setTitle("Cadastrar Usuário");
 
@@ -136,6 +138,7 @@ public class UserUpsertFrame extends JFrame {
             } else {
             	JOptionPane.showMessageDialog(this, result.get(1));
             	dispose();
+            	mainUserPanel.refreshTable();
             }
 
         } else {
@@ -151,16 +154,9 @@ public class UserUpsertFrame extends JFrame {
             } else {
             	JOptionPane.showMessageDialog(this, result.get(1));
             	dispose();
+            	mainUserPanel.refreshTable();
             }
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new UserUpsertFrame(null).setVisible(true);
-            }
-        });
-    }
 }

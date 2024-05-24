@@ -52,6 +52,7 @@ public MainProjectPanel(MainFrame mainFrame) {
 	btnNewButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			ProjectUpsertFrame addProjectFrame = new ProjectUpsertFrame(null);
+			addProjectFrame.pack();
 			addProjectFrame.setLocationRelativeTo(null);
 			addProjectFrame.setVisible(true);
 		}
