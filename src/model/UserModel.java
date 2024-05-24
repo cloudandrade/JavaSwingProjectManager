@@ -7,12 +7,12 @@ public class UserModel {
 	protected String email;
 	protected String phone;
 	protected String password;
-
+	
 	public UserModel() {
 
 	}
-
-	public UserModel(String name, String username, String email, String phone, String password) {
+	
+	public UserModel( String name, String username, String email, String phone, String password) {
 		super();
 		this.name = name;
 		this.username = username;
@@ -20,7 +20,7 @@ public class UserModel {
 		this.phone = phone;
 		this.password = password;
 	}
-
+	
 	public UserModel(int id, String name, String username, String email, String phone, String password) {
 		super();
 		this.id = id;
@@ -78,5 +78,5 @@ public class UserModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
 }
