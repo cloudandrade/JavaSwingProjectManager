@@ -16,151 +16,151 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 import application.Constants;
 import controller.UserController;
 import model.UserModel;
 
 public class UserUpsertFrame extends JFrame {
-    private JTextField nameField;
-    private JTextField userField;
-    private JTextField emailField;
-    private JTextField phoneField;
-    private JPasswordField passwordField;
-    private JButton saveButton;
+	private JTextField nameField;
+	private JTextField userField;
+	private JTextField emailField;
+	private JTextField phoneField;
+	private JPasswordField passwordField;
+	private JButton saveButton;
 
-    private UserModel user;
-    private JLabel label;
+	private UserModel user;
+	private JLabel label;
 
-    public UserUpsertFrame(UserModel user) {
-        this.user = user;
-        initialize();
-        if (user != null) {
-            populateFields();
-            setTitle("Editar Usuário");
-          
-        } else {
-            setTitle("Cadastrar Usuário");
+	public UserUpsertFrame(UserModel user) {
+		this.user = user;
+		initialize();
+		if (user != null) {
+			populateFields();
+			setTitle("Editar Usuário");
 
-        }
-    }
+		} else {
+			setTitle("Cadastrar Usuário");
 
-    private void initialize() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBackground(Color.white);
+		}
+	}
+
+	private void initialize() {
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setBackground(Color.white);
 		setPreferredSize(Constants.SMALL_FRAME_SIZE);
-        setLocationRelativeTo(null);
-        getContentPane().setLayout(new BorderLayout());
+		setLocationRelativeTo(null);
+		getContentPane().setLayout(new BorderLayout());
 
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
-        
-        JLabel titleLabel = new JLabel(user == null ? "Cadastrar Usuário" : "Editar Usuário", SwingConstants.CENTER);
-        titleLabel.setBounds(0, 23, 484, 30);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        panel.add(titleLabel);
-        
-        label = new JLabel("");
-        label.setBounds(0, 23, 484, 18);
-        panel.add(label);
-        
-        
-        JLabel label_13 = new JLabel("Nome:");
-        label_13.setBounds(22, 70, 440, 18);
-        panel.add(label_13);
-        nameField = new JTextField();
-        nameField.setBounds(22, 95, 440, 18);
-        panel.add(nameField);
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
 
-        JLabel label_14 = new JLabel("Usuário:");
-        label_14.setBounds(22, 124, 440, 18);
-        panel.add(label_14);
-        userField = new JTextField();
-        userField.setBounds(22, 142, 440, 18);
-        panel.add(userField);
+		JLabel titleLabel = new JLabel(user == null ? "Cadastrar Usuário" : "Editar Usuário", SwingConstants.CENTER);
+		titleLabel.setBounds(0, 23, 484, 30);
+		titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
+		panel.add(titleLabel);
 
-        JLabel label_15 = new JLabel("Email:");
-        label_15.setBounds(22, 167, 440, 18);
-        panel.add(label_15);
-        emailField = new JTextField();
-        emailField.setBounds(22, 185, 440, 18);
-        panel.add(emailField);
+		label = new JLabel("");
+		label.setBounds(0, 23, 484, 18);
+		panel.add(label);
 
-        JLabel label_16 = new JLabel("Telefone:");
-        label_16.setBounds(22, 214, 440, 18);
-        panel.add(label_16);
-        phoneField = new JTextField();
-        phoneField.setBounds(22, 232, 440, 18);
-        panel.add(phoneField);
+		JLabel label_13 = new JLabel("Nome:");
+		label_13.setBounds(22, 70, 440, 18);
+		panel.add(label_13);
+		nameField = new JTextField();
+		nameField.setBounds(22, 95, 440, 18);
+		panel.add(nameField);
 
-        JLabel label_17 = new JLabel("Senha:");
-        label_17.setBounds(22, 268, 440, 18);
-        panel.add(label_17);
-        passwordField = new JPasswordField();
-        passwordField.setBounds(22, 286, 440, 18);
-        panel.add(passwordField);
+		JLabel label_14 = new JLabel("Usuário:");
+		label_14.setBounds(22, 124, 440, 18);
+		panel.add(label_14);
+		userField = new JTextField();
+		userField.setBounds(22, 142, 440, 18);
+		panel.add(userField);
 
-        saveButton = new JButton("Salvar");
-        saveButton.setBounds(22, 335, 440, 36);
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                saveUser();
-            }
-        });
-        panel.add(saveButton);
+		JLabel label_15 = new JLabel("Email:");
+		label_15.setBounds(22, 167, 440, 18);
+		panel.add(label_15);
+		emailField = new JTextField();
+		emailField.setBounds(22, 185, 440, 18);
+		panel.add(emailField);
 
-        getContentPane().add(panel, BorderLayout.CENTER);
-    }
+		JLabel label_16 = new JLabel("Telefone:");
+		label_16.setBounds(22, 214, 440, 18);
+		panel.add(label_16);
+		phoneField = new JTextField();
+		phoneField.setBounds(22, 232, 440, 18);
+		panel.add(phoneField);
 
-    private void populateFields() {
-        nameField.setText(user.getName());
-        userField.setText(user.getUsername());
-        emailField.setText(user.getEmail());
-        phoneField.setText(user.getPhone());
-        passwordField.setText(user.getPassword());
-    }
+		JLabel label_17 = new JLabel("Senha:");
+		label_17.setBounds(22, 268, 440, 18);
+		panel.add(label_17);
+		passwordField = new JPasswordField();
+		passwordField.setBounds(22, 286, 440, 18);
+		panel.add(passwordField);
 
-    private void saveUser() {
-        String nameValue = nameField.getText();
-        String usernameValue = userField.getText();
-        String emailValue = emailField.getText();
-        String phoneValue = phoneField.getText();
-        String passwordValue = new String(passwordField.getPassword());
+		saveButton = new JButton("Salvar");
+		saveButton.setBounds(22, 335, 440, 36);
+		saveButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				saveUser();
+			}
+		});
+		panel.add(saveButton);
 
-        if (user == null) {
-            user = new UserModel( nameValue, usernameValue, emailValue, phoneValue, passwordValue);
-            ArrayList<String> result = UserController.addUser(user);
-            if(result.get(0) == "Error") {
-            	JOptionPane.showMessageDialog(this, result.get(1));
-            } else {
-            	JOptionPane.showMessageDialog(this, result.get(1));
-            	dispose();
-            }
+		getContentPane().add(panel, BorderLayout.CENTER);
+	}
 
-        } else {
-            user.setName(nameValue);
-            user.setUsername(usernameValue);
-            user.setEmail(emailValue);
-            user.setPhone(phoneValue);
-            user.setPassword(passwordValue);
-            
-            ArrayList<String> result = UserController.updateUser(user);
-            if(result.get(0) == "Error") {
-            	JOptionPane.showMessageDialog(this, result.get(1));
-            } else {
-            	JOptionPane.showMessageDialog(this, result.get(1));
-            	dispose();
-            }
-        }
-    }
+	private void populateFields() {
+		nameField.setText(user.getName());
+		userField.setText(user.getUsername());
+		emailField.setText(user.getEmail());
+		phoneField.setText(user.getPhone());
+		passwordField.setText(user.getPassword());
+	}
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new UserUpsertFrame(null).setVisible(true);
-            }
-        });
-    }
+	private void saveUser() {
+		String nameValue = nameField.getText();
+		String usernameValue = userField.getText();
+		String emailValue = emailField.getText();
+		String phoneValue = phoneField.getText();
+		String passwordValue = new String(passwordField.getPassword());
+
+		if (user == null) {
+			user = new UserModel(nameValue, usernameValue, emailValue, phoneValue, passwordValue);
+			ArrayList<String> result = UserController.addUser(user);
+			if (result.get(0) == "Error") {
+				JOptionPane.showMessageDialog(this, result.get(1));
+			} else {
+				JOptionPane.showMessageDialog(this, result.get(1));
+				dispose();
+			}
+
+		} else {
+			user.setName(nameValue);
+			user.setUsername(usernameValue);
+			user.setEmail(emailValue);
+			user.setPhone(phoneValue);
+			user.setPassword(passwordValue);
+
+			ArrayList<String> result = UserController.updateUser(user);
+			if (result.get(0) == "Error") {
+				JOptionPane.showMessageDialog(this, result.get(1));
+			} else {
+				JOptionPane.showMessageDialog(this, result.get(1));
+				dispose();
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new UserUpsertFrame(null).setVisible(true);
+			}
+		});
+	}
 }

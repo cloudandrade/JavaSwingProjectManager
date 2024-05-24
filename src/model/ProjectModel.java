@@ -13,12 +13,10 @@ public class ProjectModel {
 	protected String odsName;
 	protected Timestamp createdAt;
 	protected String status;
-	
-	
+
 	public ProjectModel() {
 
 	}
-
 
 	public ProjectModel(int id, String title, String description, int ownerId, String ownerName, String ownerPhone,
 			int odsId, String odsName, Timestamp createdAt, String status) {
@@ -35,108 +33,84 @@ public class ProjectModel {
 		this.status = status;
 	}
 
-
 	public int getId() {
 		return id;
 	}
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
 	public String getTitle() {
 		return title;
 	}
-
 
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-
 	public String getDescription() {
 		return description;
 	}
-
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-
 	public int getOwnerId() {
 		return ownerId;
 	}
-
 
 	public void setOwnerId(int ownerId) {
 		this.ownerId = ownerId;
 	}
 
-
 	public String getOwnerName() {
 		return ownerName;
 	}
-
 
 	public void setOwnerName(String ownerName) {
 		this.ownerName = ownerName;
 	}
 
-
 	public String getOwnerPhone() {
 		return ownerPhone;
 	}
-
 
 	public void setOwnerPhone(String ownerPhone) {
 		this.ownerPhone = ownerPhone;
 	}
 
-
 	public int getOdsId() {
 		return odsId;
 	}
-
 
 	public void setOdsId(int odsId) {
 		this.odsId = odsId;
 	}
 
-
 	public String getOdsName() {
 		return odsName;
 	}
-
 
 	public void setOdsName(String odsName) {
 		this.odsName = odsName;
 	}
 
-
 	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
-
 
 	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
 
-
 	public String getStatus() {
 		return status;
 	}
-
 
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
-	
-
-
-	
 }

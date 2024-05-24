@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
-public class ProjectTableModel extends AbstractTableModel{
-	
-	private static final String[] collumns = {"Id", "Título","Descrição","Responsável","Telefone", "Categoria", "Data de Criação", "Status"};
-	
+public class ProjectTableModel extends AbstractTableModel {
+
+	private static final String[] collumns = { "Id", "Título", "Descrição", "Responsável", "Telefone", "Categoria",
+			"Data de Criação", "Status" };
+
 	private ArrayList<ProjectModel> projects;
 
 	public ProjectTableModel(ArrayList<ProjectModel> projects) {
@@ -17,7 +18,7 @@ public class ProjectTableModel extends AbstractTableModel{
 
 	@Override
 	public int getRowCount() {
-		
+
 		return projects.size();
 	}
 
@@ -59,9 +60,9 @@ public class ProjectTableModel extends AbstractTableModel{
 		default:
 			return null;
 		}
-	
+
 	}
-	
+
 	@Override
 	public String getColumnName(int column) {
 		return collumns[column];

@@ -5,68 +5,68 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
-    
-    public static String status = "Didn't connect...";
 
-    // Método de Conexão
-    public static Connection getConnectionMySQL() {
+	public static String status = "Didn't connect...";
 
-        Connection connection = null;
+	// Método de Conexão
+	public static Connection getConnectionMySQL() {
 
-        try {
-            // Configurando a nossa conexão com um banco de dados
-            String driverName = "com.mysql.cj.jdbc.Driver"; // Classe do driver atualizada
-            String serverName = "localhost:3306";    // caminho do servidor do BD
-            String mydatabase = "odsmanager";               // nome do seu banco de dados
-            String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
-            String username = "root";                // nome de um usuário de seu BD      
-            String password = "admin";               // sua senha de acesso
+		Connection connection = null;
 
-            // Carregar a classe do driver
-            Class.forName(driverName);
+		try {
+			// Configurando a nossa conexão com um banco de dados
+			String driverName = "com.mysql.cj.jdbc.Driver"; // Classe do driver atualizada
+			String serverName = "localhost:3306"; // caminho do servidor do BD
+			String mydatabase = "odsmanager"; // nome do seu banco de dados
+			String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
+			String username = "root"; // nome de um usuário de seu BD
+			String password = "admin"; // sua senha de acesso
 
-            // Estabelecer a conexão
-            connection = DriverManager.getConnection(url, username, password);
+			// Carregar a classe do driver
+			Class.forName(driverName);
 
-            // Testa sua conexão
-            if (connection != null) {
-                status = "STATUS--->successfully connected!";
-            } else {
-                status = "STATUS--->could not connect!";
-            }
+			// Estabelecer a conexão
+			connection = DriverManager.getConnection(url, username, password);
 
-            return connection;
+			// Testa sua conexão
+			if (connection != null) {
+				status = "STATUS--->successfully connected!";
+			} else {
+				status = "STATUS--->could not connect!";
+			}
 
-        } catch (ClassNotFoundException e) {
-            System.out.println("O driver especificado não foi encontrado.");
-            e.printStackTrace();
-            return null;
-        } catch (SQLException e) {
-            System.out.println("Não foi possível conectar ao Banco de Dados.");
-            e.printStackTrace();
-            return null;
-        }
-    }
+			return connection;
 
-    // Método que retorna o status da sua conexão
-    public static String statusConection() {
-        return status;
-    }
+		} catch (ClassNotFoundException e) {
+			System.out.println("O driver especificado não foi encontrado.");
+			e.printStackTrace();
+			return null;
+		} catch (SQLException e) {
+			System.out.println("Não foi possível conectar ao Banco de Dados.");
+			e.printStackTrace();
+			return null;
+		}
+	}
 
-    // Método que fecha sua conexão
-    public static boolean closeConnection() {
-        try {
-            getConnectionMySQL().close();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+	// Método que retorna o status da sua conexão
+	public static String statusConection() {
+		return status;
+	}
 
-    // Método que reinicia sua conexão
-    public static Connection restartConnection() {
-        closeConnection();
-        return getConnectionMySQL();
-    }
+	// Método que fecha sua conexão
+	public static boolean closeConnection() {
+		try {
+			getConnectionMySQL().close();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	// Método que reinicia sua conexão
+	public static Connection restartConnection() {
+		closeConnection();
+		return getConnectionMySQL();
+	}
 }
