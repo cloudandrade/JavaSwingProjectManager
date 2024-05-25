@@ -52,5 +52,4 @@ public class UserController {
     	return Messages.SUCCESS_USER_DELETED;
     }
 
-
 }

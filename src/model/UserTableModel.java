@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
+import util.FormatUtils;
+
 public class UserTableModel extends AbstractTableModel{
 	
 	private static final long serialVersionUID = 1L;
@@ -49,7 +51,7 @@ public class UserTableModel extends AbstractTableModel{
 			return user.getPassword();
 		}
 		case 5: {
-			return user.getPhone();
+			return FormatUtils.formatPhoneNumber(user.getPhone());
 		}
 		default:
 			return null;

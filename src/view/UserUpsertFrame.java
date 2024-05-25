@@ -20,6 +20,7 @@ import javax.swing.SwingUtilities;
 import application.Constants;
 import controller.UserController;
 import model.UserModel;
+import java.awt.Dimension;
 
 public class UserUpsertFrame extends JFrame {
     private JTextField nameField;
@@ -50,7 +51,7 @@ public class UserUpsertFrame extends JFrame {
     private void initialize() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(Color.white);
-		setPreferredSize(Constants.SMALL_FRAME_SIZE);
+		setPreferredSize(new Dimension(500, 600));
         setLocationRelativeTo(null);
         getContentPane().setLayout(new BorderLayout());
 
@@ -103,6 +104,7 @@ public class UserUpsertFrame extends JFrame {
         panel.add(passwordField);
 
         saveButton = new JButton("Salvar");
+        saveButton.setBackground(new Color(135, 206, 250));
         saveButton.setBounds(22, 335, 440, 36);
         saveButton.addActionListener(new ActionListener() {
             @Override
@@ -128,7 +130,28 @@ public class UserUpsertFrame extends JFrame {
         String usernameValue = userField.getText();
         String emailValue = emailField.getText();
         String phoneValue = phoneField.getText();
-        String passwordValue = new String(passwordField.getPassword());
+        String passwordValue = new String(passwordField.getText());
+        
+        
+        if(nameField.getText() == null || nameField.getText().isBlank()) {
+        	JOptionPane.showMessageDialog(this, "O campo nome é obrigatório!","Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        if(userField.getText() == null || userField.getText().isBlank()) {
+        	JOptionPane.showMessageDialog(this, "O campo nome de usuário é obrigatório!","Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        if(emailField.getText() == null || emailField.getText().isBlank()) {
+        	JOptionPane.showMessageDialog(this, "O campo email é obrigatório!","Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+
+        if(phoneField.getText() == null || phoneField.getText().isBlank()) {
+        	JOptionPane.showMessageDialog(this, "O campo telefone é obrigatório!","Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        if(passwordField.getText() == null || passwordField.getText().isBlank()) {
+        	JOptionPane.showMessageDialog(this, "O campo senha é obrigatório!","Aviso", JOptionPane.WARNING_MESSAGE);
+        }
 
         if (user == null) {
             user = new UserModel( nameValue, usernameValue, emailValue, phoneValue, passwordValue);

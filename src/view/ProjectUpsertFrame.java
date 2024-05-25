@@ -72,6 +72,7 @@ private void initialize() {
     panel.add(odsIdFieldLabel);
 
     saveButton = new JButton("Salvar");
+    saveButton.setBackground(new Color(135, 206, 250));
     saveButton.setBounds(22, 510, 440, 36);
     saveButton.addActionListener(new ActionListener() {
         @Override
@@ -121,6 +122,16 @@ private void populateFields() {
 private void saveProject() {
     String titleValue = titleField.getText();
     String descriptionValue = descriptionField.getText();
+    
+    if( titleField.getText() == null || titleField.getText().isBlank()) {
+    	JOptionPane.showMessageDialog(this, "O campo titulo é obrigatório!","Aviso", JOptionPane.WARNING_MESSAGE);
+    }
+    
+    if(descriptionField.getText() == null || descriptionField.getText().isBlank()) {
+    	JOptionPane.showMessageDialog(this, "O campo descrição é obrigatório!","Aviso", JOptionPane.WARNING_MESSAGE);
+    }
+    
+
     
     
     UserModel loggedUser = CacheUtils.recoverUserOnLocalStorage();

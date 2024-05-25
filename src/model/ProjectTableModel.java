@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
+import util.FormatUtils;
+
 public class ProjectTableModel extends AbstractTableModel{
 	
 	private static final String[] collumns = {"Id", "Título","Descrição","Responsável","Telefone", "Categoria", "Data de Criação", "Status"};
@@ -44,13 +46,13 @@ public class ProjectTableModel extends AbstractTableModel{
 			return project.getOwnerName();
 		}
 		case 4: {
-			return project.getOwnerPhone();
+			return FormatUtils.formatPhoneNumber(project.getOwnerPhone());
 		}
 		case 5: {
 			return project.getOdsName();
 		}
 		case 6: {
-			return project.getCreatedAt();
+			return FormatUtils.formatTimestamp(project.getCreatedAt());
 		}
 		case 7: {
 			return project.getStatus();

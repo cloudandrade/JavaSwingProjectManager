@@ -106,9 +106,11 @@ public class ProjectDAO {
              
              ResultSet resultSet = statement.executeQuery();
              
+             
              while(resultSet.next()){
                ProjectModel project = new ProjectModel();
                //attributos de project
+
                project.setId(resultSet.getInt("id"));
                project.setTitle(resultSet.getString("title"));
                project.setDescription(resultSet.getString("description"));
