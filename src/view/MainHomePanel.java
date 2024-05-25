@@ -26,7 +26,6 @@ import javax.swing.SwingConstants;
 public class MainHomePanel extends JPanel {
     public MainHomePanel(MainFrame mainFrame) {
     	
-    	//UserModel loggedUser = LoginController.getLoggedUser();
         setBackground(new Color(255, 255, 240));
         setPreferredSize(Constants.MAIN_SIZE);
         setLayout(null);
@@ -50,23 +49,28 @@ public class MainHomePanel extends JPanel {
         lblNewLabel_1.setBounds(148, 104, 425, 30);
         add(lblNewLabel_1);
         
-        JLabel lblNewLabel_2 = new JLabel("em diversos lugares diferentes. Cada projeto possui etapas a serem analisadas e");
+        JLabel lblNewLabel_2 = new JLabel("a salvar muitas pessoas em diversos lugares diferentes. Cada projeto possui etapas ");
+        lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 11));
         lblNewLabel_2.setToolTipText("");
         lblNewLabel_2.setVerticalAlignment(SwingConstants.TOP);
         lblNewLabel_2.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_2.setBounds(42, 215, 740, 30);
         add(lblNewLabel_2);
         
-        JLabel lblNewLabel_3 = new JLabel("Project Manager é uma iniciativa de controle de projetos para ajuda humanitária e mundial,");
-        lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
+        JLabel lblNewLabel_3 = new JLabel("Project Manager é uma iniciativa de controle de projetos para ajuda humanitária mundial,");
+        lblNewLabel_3.setHorizontalAlignment(SwingConstants.LEFT);
+        lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 11));
         lblNewLabel_3.setBounds(42, 175, 516, 14);
         add(lblNewLabel_3);
         
-        JLabel lblNewLabel_4 = new JLabel("os projetos possuem temas baseados nos  indicadores de ODS da ONU que ajudam a salvar muitas pessoas");
+        JLabel lblNewLabel_4 = new JLabel("os projetos possuem temas baseados nos  indicadores de ODS da ONU que ajudam");
+        lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 11));
+        lblNewLabel_4.setHorizontalAlignment(SwingConstants.LEFT);
         lblNewLabel_4.setBounds(42, 195, 556, 14);
         add(lblNewLabel_4);
         
-        JLabel lblNewLabel_5 = new JLabel("que caso aprovado serão executados pela equipe responsável em conjunto com o criador do projeto.");
+        JLabel lblNewLabel_5 = new JLabel("a serem analisadas e que caso aprovado serão executados pela equipe responsável");
+        lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
         lblNewLabel_5.setBounds(42, 235, 498, 14);
         add(lblNewLabel_5);
         
@@ -87,5 +91,11 @@ public class MainHomePanel extends JPanel {
         }
         
         add(lblOdsImage);
+        
+        JLabel lblNewLabel_6 = new JLabel("em conjunto com o criador do projeto.");
+        lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 11));
+        lblNewLabel_6.setHorizontalAlignment(SwingConstants.LEFT);
+        lblNewLabel_6.setBounds(42, 256, 375, 14);
+        add(lblNewLabel_6);
     }
 }

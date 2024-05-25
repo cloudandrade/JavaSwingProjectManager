@@ -43,13 +43,13 @@ public class MainProjectPanel extends JPanel {
         projects = projectDao.list();
         ProjectTableModel tableModel = new ProjectTableModel(projects);
 
-        setBackground(Color.white);
+        setBackground(new Color(255, 255, 240));
         setPreferredSize(Constants.MAIN_SIZE);
         setBorder(new EmptyBorder(5, 5, 5, 5));
         setLayout(null);
 
         JButton btnNewButton = new JButton("Cadastrar");
-        btnNewButton.setBackground(Color.GREEN);
+        btnNewButton.setBackground(new Color(135, 206, 250));
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openProjectUpsertFrame(null); // Abrir ProjectUpsertFrame para adicionar novo projeto
@@ -108,6 +108,7 @@ public class MainProjectPanel extends JPanel {
         add(btnDeleteProject);
 
         JButton btnEditProject = new JButton("Editar");
+        btnEditProject.setForeground(Color.BLACK);
         btnEditProject.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = table.getSelectedRow();

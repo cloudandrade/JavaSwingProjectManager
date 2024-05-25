@@ -41,13 +41,13 @@ public class MainUserPanel extends JPanel {
         users = userDao.list();
         UserTableModel tableModel = new UserTableModel(users);
 
-        setBackground(Color.white);
+        setBackground(new Color(255, 255, 240));
         setPreferredSize(Constants.MAIN_SIZE);
         setBorder(new EmptyBorder(5, 5, 5, 5));
         setLayout(null);
 
         JButton btnNewButton = new JButton("Cadastrar");
-        btnNewButton.setBackground(Color.GREEN);
+        btnNewButton.setBackground(new Color(135, 206, 250));
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	openUserUpsertFrame(null);
