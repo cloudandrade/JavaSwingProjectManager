@@ -10,7 +10,7 @@ public class Main {
             @Override
             public void run() {
             	LoginFrame frame = new LoginFrame();
-				frame.setLocationRelativeTo(null);
+				frame.setLocationRelativeTo(frame);
 				frame.setVisible(true);
             }
         });

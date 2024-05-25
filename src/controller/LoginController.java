@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import dao.UserDAO;
 import model.UserModel;
+import util.CacheUtils;
 import util.EncryptUtils;
 import util.Messages;
 
@@ -12,11 +13,10 @@ public class LoginController {
     private static UserDAO userDao = new UserDAO();
 
     public static ArrayList<String> validateLogin(String email, String password) {
-        UserModel user = null;
 
         try {
-            user = userDao.findByEmail(email);
-
+            UserModel user = userDao.findByEmail(email);
+            
             if (user == null) {
                 System.out.println("LoginController :: validateLogin :: Error: User not found on database");
                 return Messages.USER_EMAIL_NOT_FOUND;
@@ -24,19 +24,20 @@ public class LoginController {
                 System.out.println("LoginController :: validateLogin :: password is incorrect");
                 return Messages.PASSWORD_WRONG;
             }
+            // armazenando em cache local o usuario autenticado
+            CacheUtils.putUserOnLocalStorage(user); 
+            System.out.println("LoginController :: validateLogin :: User found: " + user.toString());
         } catch (Exception e) {
             e.printStackTrace();
             return Messages.GENERAL_ERROR;
         }
-
-        System.out.println("LoginController :: validateLogin :: User found: " + user.toString());
+        
         return Messages.SUCCESS_AUTH;
     }
 
-    // Outro método estático para um exemplo adicional
-    public static void logout() {
-        // Lógica de logout (exemplo)
-        System.out.println("Usuário deslogado com sucesso.");
+    public static void onLogout() {
+        CacheUtils.deleteUserOnLocalStorage();
+        System.out.println("LoginController :: logout :: Usuário deslogado com sucesso.");
     }
 }
 

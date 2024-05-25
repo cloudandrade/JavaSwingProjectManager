@@ -6,12 +6,16 @@ import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 
 import application.Constants;
+import controller.LoginController;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -67,8 +71,25 @@ public class MainFrame extends JFrame {
 
         JButton btnHome = new JButton("Inicio");
         btnHome.setFont(new Font("Tahoma", Font.BOLD, 16));
-        btnHome.setBackground(new Color(147, 112, 219));
+        btnHome.setFocusPainted(false); // Remove o foco pintado padrão
+        btnHome.setBorderPainted(false); // Remove a borda pintada
+        btnHome.setContentAreaFilled(false); // Remove a área de conteúdo preenchida
+        btnHome.setOpaque(true);
         btnHome.setBounds(0, 95, 273, 42);
+        btnHome.setBackground(new Color(135, 206, 250));
+        btnHome.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+            	btnHome.setBackground(new Color(153, 50, 204)); // Cor quando o botão está focado
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+            	btnHome.setBackground(new Color(135, 206, 250)); // Cor quando o botão perde o foco
+            }
+        });
+        
+       
         btnHome.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -81,13 +102,28 @@ public class MainFrame extends JFrame {
         
         JLabel lblMenuLabel = new JLabel("Project\r\nManager");
         lblMenuLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        lblMenuLabel.setFont(new Font("Impact", Font.BOLD, 42));
+        lblMenuLabel.setFont(new Font("Impact", Font.BOLD, 32));
         lblMenuLabel.setBounds(0, 11, 273, 73);
         panelMenu.add(lblMenuLabel);
         
         JButton btnMainUser = new JButton("Usuários");
         btnMainUser.setFont(new Font("Tahoma", Font.BOLD, 16));
-        btnMainUser.setBackground(new Color(147, 112, 219));
+        btnMainUser.setFocusPainted(false); // Remove o foco pintado padrão
+        btnMainUser.setBorderPainted(false); // Remove a borda pintada
+        btnMainUser.setContentAreaFilled(false); // Remove a área de conteúdo preenchida
+        btnMainUser.setOpaque(true);
+        btnMainUser.setBackground(new Color(135, 206, 250));
+        btnMainUser.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+            	btnMainUser.setBackground(new Color(153, 50, 204)); // Cor quando o botão está focado
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+            	btnMainUser.setBackground(new Color(135, 206, 250)); // Cor quando o botão perde o foco
+            }
+        });
         btnMainUser.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		showPanel("MainUserPanel");
@@ -98,9 +134,14 @@ public class MainFrame extends JFrame {
         
         JButton btnLogout = new JButton("Sair");
         btnLogout.setFont(new Font("Tahoma", Font.BOLD, 16));
-        btnLogout.setBackground(new Color(147, 112, 219));
+        btnLogout.setFocusPainted(false); // Remove o foco pintado padrão
+        btnLogout.setBorderPainted(false); // Remove a borda pintada
+        btnLogout.setContentAreaFilled(false); // Remove a área de conteúdo preenchida
+        btnLogout.setOpaque(true);
+        btnLogout.setBackground(new Color(135, 206, 250));
         btnLogout.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		LoginController.onLogout();
         		dispose();
         		LoginFrame frame = new LoginFrame();
 				frame.setLocationRelativeTo(null);
@@ -116,7 +157,22 @@ public class MainFrame extends JFrame {
         
         JButton btnMainProject = new JButton("Projetos");
         btnMainProject.setFont(new Font("Tahoma", Font.BOLD, 16));
-        btnMainProject.setBackground(new Color(147, 112, 219));
+        btnMainProject.setFocusPainted(false); // Remove o foco pintado padrão
+        btnMainProject.setBorderPainted(false); // Remove a borda pintada
+        btnMainProject.setContentAreaFilled(false); // Remove a área de conteúdo preenchida
+        btnMainProject.setOpaque(true);
+        btnMainProject.setBackground(new Color(135, 206, 250));
+        btnMainProject.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+            	btnMainProject.setBackground(new Color(153, 50, 204)); // Cor quando o botão está focado
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+            	btnMainProject.setBackground(new Color(135, 206, 250)); // Cor quando o botão perde o foco
+            }
+        });
         btnMainProject.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		showPanel("MainProjectPanel");

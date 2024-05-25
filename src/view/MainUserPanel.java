@@ -21,6 +21,7 @@ import application.Constants;
 import dao.UserDAO;
 import model.UserModel;
 import model.UserTableModel;
+import javax.swing.SwingConstants;
 
 public class MainUserPanel extends JPanel {
 
@@ -61,6 +62,7 @@ public class MainUserPanel extends JPanel {
         textField.setColumns(10);
 
         JButton btnNewButton_1 = new JButton("Pesquisar");
+        btnNewButton_1.setBackground(Color.LIGHT_GRAY);
         btnNewButton_1.setBounds(947, 161, 119, 23);
         add(btnNewButton_1);
 
@@ -78,6 +80,7 @@ public class MainUserPanel extends JPanel {
         scrollPane.setViewportView(table);
 
         JLabel lblUsers = new JLabel("Usuários");
+        lblUsers.setHorizontalAlignment(SwingConstants.CENTER);
         lblUsers.setFont(new Font("Tahoma", Font.BOLD, 28));
         lblUsers.setBounds(21, 11, 1045, 41);
         add(lblUsers);

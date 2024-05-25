@@ -47,6 +47,12 @@ public class LoginFrame extends JFrame {
 	        contentPane.add(panel);
 	        panel.setLayout(null);
 	        
+	        JLabel lblNewLabel_3 = new JLabel("LOGIN");
+	        lblNewLabel_3.setForeground(new Color(255, 255, 255));
+	        lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 18));
+	        lblNewLabel_3.setBounds(364, 110, 66, 14);
+	        panel.add(lblNewLabel_3);
+	        
 	        JLabel lblNewLabel = new JLabel("Usuário:");
 	        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 	        lblNewLabel.setBounds(276, 210, 66, 14);
@@ -69,9 +75,9 @@ public class LoginFrame extends JFrame {
 	        btnNewButton.setBounds(276, 316, 244, 45);
 	        panel.add(btnNewButton);
 	        
-	        JLabel lblNewLabel_2 = new JLabel("LOGIN");
-	        lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 32));
-	        lblNewLabel_2.setBounds(338, 72, 117, 34);
+	        JLabel lblNewLabel_2 = new JLabel("Project Manager");
+	        lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 24));
+	        lblNewLabel_2.setBounds(295, 72, 200, 34);
 	        panel.add(lblNewLabel_2);
 	        
 	        passwordField = new JPasswordField();
