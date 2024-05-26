@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -18,6 +19,11 @@ public class UserTableModel extends AbstractTableModel{
 		super();
 		this.users = users;
 	}
+	
+	  public void setUsers(ArrayList<UserModel> users) {
+	        this.users = users;
+	        fireTableDataChanged();
+	    }
 
 	@Override
 	public int getRowCount() {

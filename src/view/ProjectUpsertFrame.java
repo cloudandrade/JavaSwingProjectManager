@@ -42,7 +42,7 @@ public class ProjectUpsertFrame extends JFrame {
 
 private void initialize() {
 	ODSDAO odsDao = new ODSDAO();
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     setBackground(Color.white);
     setPreferredSize(Constants.SMALL_FRAME__EXTENDED_SIZE);
     setLocationRelativeTo(null);
@@ -151,7 +151,7 @@ private void saveProject() {
         } else {
         	JOptionPane.showMessageDialog(this, result.get(1));
         	dispose();
-        	mainProjectPanel.refreshTable();
+        	mainProjectPanel.refreshTable(null);
         }
 
     } else {
@@ -165,7 +165,7 @@ private void saveProject() {
         } else {
         	JOptionPane.showMessageDialog(this, result.get(1));
         	dispose();
-        	mainProjectPanel.refreshTable();
+        	mainProjectPanel.refreshTable(null);
         }
     }
 }

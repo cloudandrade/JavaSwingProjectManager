@@ -49,7 +49,7 @@ public class UserUpsertFrame extends JFrame {
     }
 
     private void initialize() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBackground(Color.white);
 		setPreferredSize(new Dimension(500, 600));
         setLocationRelativeTo(null);
@@ -161,7 +161,7 @@ public class UserUpsertFrame extends JFrame {
             } else {
             	JOptionPane.showMessageDialog(this, result.get(1));
             	dispose();
-            	mainUserPanel.refreshTable();
+            	mainUserPanel.refreshTable(null);
             }
 
         } else {
@@ -177,7 +177,7 @@ public class UserUpsertFrame extends JFrame {
             } else {
             	JOptionPane.showMessageDialog(this, result.get(1));
             	dispose();
-            	mainUserPanel.refreshTable();
+            	mainUserPanel.refreshTable(null);
             }
         }
     }

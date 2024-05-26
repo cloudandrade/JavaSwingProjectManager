@@ -31,17 +31,18 @@ import javax.swing.SwingConstants;
 
 public class MainProjectPanel extends JPanel {
     private static final long serialVersionUID = 1L;
-    private JTextField textField;
+    private JTextField textFieldSearch;
     private JTable table;
     private ArrayList<ProjectModel> projects;
     private static ProjectDAO projectDao;
     private ProjectModel selectedProject;
+    private ProjectTableModel tableModel;
 
     public MainProjectPanel(MainFrame mainFrame) {
         projectDao = new ProjectDAO();
         projects = new ArrayList<>();
         projects = projectDao.list();
-        ProjectTableModel tableModel = new ProjectTableModel(projects);
+        tableModel = new ProjectTableModel(projects);
 
         setBackground(new Color(255, 255, 240));
         setPreferredSize(Constants.MAIN_SIZE);
@@ -58,15 +59,22 @@ public class MainProjectPanel extends JPanel {
         btnNewButton.setBounds(21, 161, 101, 23);
         add(btnNewButton);
 
-        textField = new JTextField();
-        textField.setBounds(458, 161, 479, 22);
-        add(textField);
-        textField.setColumns(10);
+        textFieldSearch = new JTextField();
+        textFieldSearch.setBounds(458, 161, 479, 22);
+        add(textFieldSearch);
+        textFieldSearch.setColumns(10);
 
-        JButton btnNewButton_1 = new JButton("Pesquisar");
-        btnNewButton_1.setBackground(Color.LIGHT_GRAY);
-        btnNewButton_1.setBounds(947, 161, 119, 23);
-        add(btnNewButton_1);
+        JButton btnSearch = new JButton("Pesquisar");
+        btnSearch.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		String search = textFieldSearch.getText();
+        		projects = projectDao.findByTitle(search);
+        		refreshTable(projects);
+        	}
+        });
+        btnSearch.setBackground(Color.LIGHT_GRAY);
+        btnSearch.setBounds(947, 161, 119, 23);
+        add(btnSearch);
 
         JLabel lblNewLabel = new JLabel("Pesquisar:");
         lblNewLabel.setBounds(367, 165, 81, 14);
@@ -98,7 +106,7 @@ public class MainProjectPanel extends JPanel {
                 if (selectedRow != -1) {
                 	ProjectModel selectedProject = projects.get(selectedRow);
                 	projectDao.delete(selectedProject.getId());
-                    refreshTable();
+                    refreshTable(null);
                 } else {
                     JOptionPane.showMessageDialog(btnDeleteProject, "Por favor, selecione um projeto para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
@@ -150,9 +158,12 @@ public class MainProjectPanel extends JPanel {
         upsertFrame.setVisible(true);
     }
 
-    public void refreshTable() {
-        projects = projectDao.list();
-        ProjectTableModel tableModel = new ProjectTableModel(projects);
-        table.setModel(tableModel);
+    public void refreshTable(ArrayList<ProjectModel> projectsList) {
+    	if(projectsList != null) {
+            tableModel.setProjects(projectsList);
+        } else {
+            tableModel.setProjects(projectDao.list());
+        }
+    	tableModel.fireTableDataChanged();
     }
 }

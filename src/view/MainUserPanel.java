@@ -26,20 +26,21 @@ import javax.swing.SwingConstants;
 public class MainUserPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
-    private JTextField textField;
+    private JTextField textFieldSearch;
     private JTable table;
     private ArrayList<UserModel> users;
     private static UserDAO userDao;
     private JButton btnEditUser;
     private JButton btnDeleteUser;
     private UserModel selectedUser;
+    private UserTableModel tableModel;
 
     public MainUserPanel(MainFrame mainFrame) {
         userDao = new UserDAO();
         users = new ArrayList<>();
 
         users = userDao.list();
-        UserTableModel tableModel = new UserTableModel(users);
+        tableModel = new UserTableModel(users);
 
         setBackground(new Color(255, 255, 240));
         setPreferredSize(Constants.MAIN_SIZE);
@@ -56,15 +57,24 @@ public class MainUserPanel extends JPanel {
         btnNewButton.setBounds(21, 161, 101, 23);
         add(btnNewButton);
 
-        textField = new JTextField();
-        textField.setBounds(458, 161, 479, 22);
-        add(textField);
-        textField.setColumns(10);
+        textFieldSearch = new JTextField();
+        textFieldSearch.setBounds(458, 161, 479, 22);
+        add(textFieldSearch);
+        textFieldSearch.setColumns(10);
 
-        JButton btnNewButton_1 = new JButton("Pesquisar");
-        btnNewButton_1.setBackground(Color.LIGHT_GRAY);
-        btnNewButton_1.setBounds(947, 161, 119, 23);
-        add(btnNewButton_1);
+        JButton btnSearch = new JButton("Pesquisar");
+        btnSearch.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		String search = textFieldSearch.getText();  
+        		users = userDao.findByName(search);
+        		System.out.println("searched: " + search);
+        		System.out.println("returned: " + users.size() + " length");
+                refreshTable(users);
+        		}
+        });
+        btnSearch.setBackground(Color.LIGHT_GRAY);
+        btnSearch.setBounds(947, 161, 119, 23);
+        add(btnSearch);
 
         JLabel lblNewLabel = new JLabel("Pesquisar:");
         lblNewLabel.setBounds(367, 165, 81, 14);
@@ -107,7 +117,7 @@ public class MainUserPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if (selectedUser != null) {
                     userDao.delete(selectedUser.getId());
-                    refreshTable();
+                    refreshTable(null);
                 }
             }
         });
@@ -133,10 +143,13 @@ public class MainUserPanel extends JPanel {
         });
     }
 
-    void refreshTable() {
-        users.clear();
-        users.addAll(userDao.list());
-        ((UserTableModel) table.getModel()).fireTableDataChanged();
+    void refreshTable(ArrayList<UserModel> usersList) {
+        if(usersList != null) {
+            tableModel.setUsers(usersList);
+        } else {
+            tableModel.setUsers(userDao.list());
+        }
+        tableModel.fireTableDataChanged();
     }
     
     public void openUserUpsertFrame(UserModel user) {

@@ -16,6 +16,11 @@ public class ProjectTableModel extends AbstractTableModel{
 		super();
 		this.projects = projects;
 	}
+	
+	  public void setProjects(ArrayList<ProjectModel> projects) {
+	        this.projects = projects;
+	        fireTableDataChanged();
+	    }
 
 	@Override
 	public int getRowCount() {
