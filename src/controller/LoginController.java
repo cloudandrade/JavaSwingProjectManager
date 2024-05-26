@@ -10,7 +10,7 @@ import util.Messages;
 
 public class LoginController {
 
-    private static UserDAO userDao = new UserDAO();
+    public static UserDAO userDao = new UserDAO();
 
     public static ArrayList<String> validateLogin(String email, String password) {
 
